@@ -7,16 +7,18 @@ local client = spore.new_from_lua{
             path = '/departamento/listar',
             method = 'GET',
         },
-        get_user_info = {
-            path = '/show',
+        distrito_buscar = {
+            path = '/distrito/buscar',
             method = 'GET',
             required_params = {
-                'user',
+                'nombre',
             },
         },
     },
 }
 
--- local r = client:get_user_info{ user = 'John' }
-local req = client:departamento_listar{}
-print(req.body)
+local req1 = client:departamento_listar{}
+print(req1.body)
+print("-----------------------------------------")
+local req2 = client:distrito_buscar{ nombre = 'La V'}
+print(req2.body)
